@@ -1,15 +1,12 @@
-package BJ;
+package BJ.우선순위큐;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-/**
- * 카드 합체 놀이
- */
-public class BJ_15903 {
+public class BJ_15903_카드합체놀이 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -18,22 +15,22 @@ public class BJ_15903 {
         int M = Integer.parseInt(token.nextToken());
 
         token = new StringTokenizer(br.readLine());
-        int[] cards = new int[N];
+        PriorityQueue<Long> pq = new PriorityQueue<>();
         for(int i = 0; i < N; i++) {
-            cards[i] = Integer.parseInt(token.nextToken());
+            pq.offer((long) Integer.parseInt(token.nextToken()));
         }
 
         for(int i = 0; i < M; i++) {
-            Arrays.sort(cards);
-            int sum = cards[0] + cards[1];
-            cards[0] = sum;
-            cards[1] = sum;
+            long a = pq.poll();
+            long b = pq.poll();
+            pq.offer(a+b);
+            pq.offer(a+b);
         }
 
-        int total = 0;
-        for(int i = 0; i < N; i++) {
-            total += cards[i];
+        long sum = 0;
+        while(!pq.isEmpty()) {
+            sum += pq.poll();
         }
-        System.out.println(total);
+        System.out.println(sum);
     }
 }
