@@ -32,9 +32,7 @@ public class BJ_1038_감소하는수 {
             long max = 9;
             for(int j = 0; j < i-1; j++) {
                 max *= 10;
-                if(j < 2) {
-                    max += 8;
-                }
+                max += 8-j;
             }
             for(long j = num; j <= max; j++) {
                 if(isDecreasing(j)) {
