@@ -1,8 +1,8 @@
-package BJ;
+package BJ.완전탐색;
 
 import java.util.Scanner;
 
-public class BlackJack_2798 {
+public class BJ_2798_블랙잭 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

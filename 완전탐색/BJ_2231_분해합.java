@@ -1,8 +1,8 @@
-package BJ;
+package BJ.완전탐색;
 
 import java.util.Scanner;
 
-public class Decompose_2231 {
+public class BJ_2231_분해합 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int N = scanner.nextInt();
