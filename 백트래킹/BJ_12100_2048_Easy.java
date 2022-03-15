@@ -12,6 +12,7 @@ public class BJ_12100_2048_Easy {
     static int[][] board;
     static int max;
 
+    // 배열에서 최대값을 찾는 메소드
     public static int fineMax(int[][] arr) {
         int temp = Integer.MIN_VALUE;
         for(int r = 0; r < N; r++) {
@@ -24,10 +25,11 @@ public class BJ_12100_2048_Easy {
         return temp;
     }
 
+    // 왼쪽으로 이동
     public static int[][] swipeLeft(int[][] arr) {
         int[][] newArr = new int[N][N];
         for(int r = 0; r < N; r++) {
-            ArrayList<Integer> list = new ArrayList<>();
+            ArrayList<Integer> list = new ArrayList<>();    // 결과값을 저장할 ArrayList
             int pre = arr[r][0];
             for(int c = 1; c < N; c++) {
                 if(pre == 0) {
@@ -58,6 +60,7 @@ public class BJ_12100_2048_Easy {
         return newArr;
     }
 
+    // 오른쪽으로 이동
     public static int[][] swipeRight(int[][] arr) {
         int[][] newArr = new int[N][N];
         for(int r = 0; r < N; r++) {
@@ -92,6 +95,7 @@ public class BJ_12100_2048_Easy {
         return newArr;
     }
 
+    // 위로 이동
     public static int[][] swipeUp(int[][] arr) {
         int[][] newArr = new int[N][N];
         for(int c = 0; c < N; c++) {
@@ -126,6 +130,7 @@ public class BJ_12100_2048_Easy {
         return newArr;
     }
 
+    // 아래로 이동
     public static int[][] swipeDown(int[][] arr) {
         int[][] newArr = new int[N][N];
         for(int c = 0; c < N; c++) {
@@ -160,6 +165,8 @@ public class BJ_12100_2048_Easy {
         return newArr;
     }
 
+
+    // 최대 5번 이동시킬 수 있으므로 5번을 어떻게 이동할 지 순열로 구한다.
     public static void permutation2048(int nth, int[][] arr) {
         if(nth == 5) {
             int maxValue = fineMax(arr);
@@ -189,6 +196,7 @@ public class BJ_12100_2048_Easy {
                 board[i][j] = Integer.parseInt(token.nextToken());
             }
         }
+        // 배열입력끝------------------
 
         permutation2048(0, board);
         System.out.println(max);
