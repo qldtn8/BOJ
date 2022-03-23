@@ -1,8 +1,8 @@
-package BJ;
+package BJ.재귀;
 
 import java.util.Scanner;
 
-public class hanoi_11729 {
+public class BJ_11729_하노이탑이동순서 {
 
     static int count = 0;
 

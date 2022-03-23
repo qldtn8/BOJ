@@ -1,4 +1,4 @@
-package BJ;
+package BJ.재귀;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * 별 찍기 - 11
  */
-public class BJ_2448 {
+public class BJ_2448_별찍기11 {
 
     static void star(char[][] arr, int x, int y, int N) {
         if(N == 3) {
