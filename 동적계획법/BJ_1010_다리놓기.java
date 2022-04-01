@@ -1,4 +1,4 @@
-package BJ.순열조합부분집합;
+package BJ.동적계획법;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,22 +11,19 @@ public class BJ_1010_다리놓기 {
     static int R;
     static int N;
 
-//    public static void combination(int start, int count) {
-//        if(count == R -1) {
-//            total += N -start;
-//            return;
-//        }
-//        for(int i = start; i < N; i++) {
-//            combination(i+1, count+1);
-//        }
-//
-//    }
-
-    public static int combination2(int n, int r) {
-        if(r == 0 || r == n) {
+    public static int combination() {
+        if(R == 0 || N == R) {
             return 1;
         }
-        return combination2(n-1, r-1) + combination2(n-1, r);
+
+        int[][] combi = new int[N+1][N+1];
+        for(int n = 1; n < N+1; n++) {
+            for(int r = 0; r < n+1; r++) {
+                if(r == 0 || r == n) combi[n][r] = 1;
+                else combi[n][r] = combi[n-1][r-1] + combi[n-1][r];
+            }
+        }
+        return combi[N][R];
     }
 
     public static void main(String[] args) throws IOException {
@@ -39,9 +36,7 @@ public class BJ_1010_다리놓기 {
             token = new StringTokenizer(br.readLine());
             R = Integer.parseInt(token.nextToken());
             N = Integer.parseInt(token.nextToken());
-
-            if(R > N /2) R = N - R;
-            output.append(combination2(N, R)+"\n");
+            output.append(combination()+"\n");
         }
         System.out.println(output.toString());
     }
