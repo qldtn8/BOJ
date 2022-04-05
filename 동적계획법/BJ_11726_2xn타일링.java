@@ -18,5 +18,6 @@ public class BJ_11726_2xn타일링 {
             DP[i] = (DP[i-1]+DP[i-2]) % 10007;
         }
         System.out.println(DP[n]);
+
     }
 }
