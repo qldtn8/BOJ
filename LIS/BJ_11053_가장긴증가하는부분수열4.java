@@ -6,22 +6,10 @@ import java.util.StringTokenizer;
 public class BJ_11053_가장긴증가하는부분수열4 {
 
     static int N;
-    static int[] LIS;
-
-    public static int binarySearch(int left, int right, int x) {
-        int mid;
-        while(left < right) {
-            mid = (left+right) / 2;
-            if(LIS[mid] < x) left = mid + 1;
-            else if(LIS[mid] > x) right = mid;
-            else return mid;
-        }
-        return right;
-    }
+    static int[] DP;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         N = Integer.parseInt(br.readLine());
         int[] arr = new int[N];
@@ -30,23 +18,21 @@ public class BJ_11053_가장긴증가하는부분수열4 {
             arr[i] = Integer.parseInt(token.nextToken());
         }
 
-        LIS = new int[N+1];
-        int length = 0;
-        for(int i = 1; i <= N; i++) {
-            if(arr[i-1] > LIS[length]) {
-                LIS[++length] = arr[i-1];
-            } else {
-                int index = binarySearch(1, length, arr[i-1]);
-                LIS[index] = arr[i-1];
+        DP = new int[N];
+        StringBuilder[] LIS = new StringBuilder[N];
+        int max = 0;
+        for(int i = 0; i < N; i++) {
+            DP[i] = 1;
+            LIS[i] = new StringBuilder(arr[i] + " ");
+            for(int j = 0; j < i; j++) {
+                if(arr[j] < arr[i] && DP[i] < 1 + DP[j]) {
+                    DP[i] = 1 + DP[j];
+                    LIS[i] = new StringBuilder(LIS[j]).append(arr[i]+" ");
+                }
             }
+            if(DP[max] < DP[i]) max = i;
         }
-        bw.write(length+"\n");
-        for(int i = 1; i <= N; i++) {
-            if(LIS[i] != 0) bw.write(LIS[i]+" ");
-            else break;
-        }
-        bw.flush();
-        bw.close();
-        br.close();
+        System.out.println(DP[max]);
+        System.out.println(LIS[max]);
     }
 }
