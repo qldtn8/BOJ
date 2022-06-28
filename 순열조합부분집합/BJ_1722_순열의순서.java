@@ -11,6 +11,42 @@ public class BJ_1722_순열의순서 {
     static int k;
     static int[] arr;
 
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
+
+        StringTokenizer token = new StringTokenizer(br.readLine());
+        if(token.nextToken().equals("1")) k = Integer.parseInt(token.nextToken());
+        else {
+            arr = new int[N];
+            for(int i = 0; i < N; i++) arr[i] = Integer.parseInt(token.nextToken());
+        }
+
+    }
+
+    public static void firstProblem(int flag, int count) {
+
+        for(int i = 1; i <= N; i++) {
+            if((flag & 1 << i) != 0) continue;
+
+
+        }
+    }
+}
+
+
+/*
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class BJ_1722_순열의순서 {
+
+    static int N;
+    static int k;
+    static int[] arr;
+
     static int count;
     static boolean problemFirst;
     static boolean done;
@@ -67,3 +103,4 @@ public class BJ_1722_순열의순서 {
             System.out.println(count);
     }
 }
+ */
